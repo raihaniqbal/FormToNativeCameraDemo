@@ -47,18 +47,15 @@ namespace FormsToNativeCameraDemo.Droid.Handlers
                     if (image != null)
                     {
                         int[] stridelist = image.GetStrides();
-                        TextResult[] text = barcodeReader.DecodeBuffer(image.GetYuvData(), previewWidth, previewHeight, stridelist[0], EnumImagePixelFormat.IpfNv21, "");
-                        if (text != null && text.Length > 0)
+                        TextResult[] textResult = barcodeReader.DecodeBuffer(image.GetYuvData(), previewWidth, previewHeight, stridelist[0], EnumImagePixelFormat.IpfNv21, "");
+                        var detectedBarcodes = textResult.Where(t => !DetectedCodes.Contains(t.BarcodeText)).Select(t => t.BarcodeText);
+                        if(detectedBarcodes.Count() > 0)
                         {
-                            for (int i = 0; i < text.Length; i++)
-                            {
-                                if (!DetectedCodes.Contains(text[i].BarcodeText))
-                                {
-                                    DetectedCodes.Add(text[i].BarcodeText);
-                                    var _mediaPlayer = MediaPlayer.Create(global::Android.App.Application.Context, Resource.Raw.ScanBeep);
-                                    _mediaPlayer.Start();
-                                }
-                            }
+                            var _mediaPlayer = MediaPlayer.Create(global::Android.App.Application.Context, Resource.Raw.ScanBeep);
+                            _mediaPlayer.Start();
+
+                            foreach (var code in detectedBarcodes)
+                                DetectedCodes.Add(code);
                         }
                     }
                 }

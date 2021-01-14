@@ -18,6 +18,7 @@ using Android.Support.V4.App;
 using FormsToNativeCameraDemo.Droid.Handlers;
 using Android.OS;
 using Com.Dynamsoft.Dbr;
+using System.Linq;
 
 [assembly: ExportRenderer(typeof(CameraPage), typeof(CameraPageRenderer))]
 namespace FormsToNativeCameraDemo.Droid.Renderers
@@ -69,7 +70,7 @@ namespace FormsToNativeCameraDemo.Droid.Renderers
 
             textureView = view.FindViewById<TextureView>(Resource.Id.cameraView);
             textureView.SurfaceTextureListener = this;
-            txtDeviceCount = view.FindViewById<global::Android.Widget.TextView>(Resource.Id.txtTotalDevices);
+            txtDeviceCount = view.FindViewById<global::Android.Widget.TextView>(Resource.Id.txtDeviceCount);
         }
 
         void SetupEventHandlers()
@@ -121,13 +122,6 @@ namespace FormsToNativeCameraDemo.Droid.Renderers
             {
                 parameters.FocusMode = Android.Hardware.Camera.Parameters.FocusModeContinuousVideo;
             }
-            //IList<Android.Hardware.Camera.Size> suportedPreviewSizes = parameters.SupportedPreviewSizes;
-            //int i = 0;
-            //for (i = 0; i < suportedPreviewSizes.Count; i++)
-            //{
-            //    if (suportedPreviewSizes[i].Width < 1300) break;
-            //}
-            //parameters.SetPreviewSize(suportedPreviewSizes[i].Width, suportedPreviewSizes[i].Height);
             camera.SetParameters(parameters);
             camera.SetPreviewCallback(this);
 
@@ -142,6 +136,7 @@ namespace FormsToNativeCameraDemo.Droid.Renderers
         public bool OnSurfaceTextureDestroyed(SurfaceTexture surface)
         {
             camera.StopPreview();
+            camera.SetPreviewCallback(null);
             camera.Release();
             return true;
         }
@@ -202,13 +197,12 @@ namespace FormsToNativeCameraDemo.Droid.Renderers
         #region Event Handlers
         private void StopScanButton_Click(object sender, EventArgs e)
         {
-
+            MessagingCenter.Send((App)Xamarin.Forms.Application.Current, "ScanComplete", backgroundBarcodeHandler.DetectedCodes.ToList());
         }
         private void OnCodeDetectedHandler(int totalCodes)
         {
-            //txtTotalBarcodesFound.Text = string.Format("Devices Found: {0}", totalCodes);
-            if(totalCodes > 0)
-                Console.WriteLine(string.Format("Devices Found: {0}", totalCodes));
+            if (totalCodes > 0)
+                txtDeviceCount.Text = string.Format("Devices Found: {0}", totalCodes);
         }
 
         #endregion

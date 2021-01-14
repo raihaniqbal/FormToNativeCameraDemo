@@ -111,6 +111,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\CameraLayout.xml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
