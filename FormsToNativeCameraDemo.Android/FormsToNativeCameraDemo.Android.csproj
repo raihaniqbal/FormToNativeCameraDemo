@@ -64,6 +64,7 @@
     <Compile Include="CameraActivity.cs" />
     <Compile Include="Handlers\BarcodeReaderHandler.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\CameraPageRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -107,7 +108,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\scannerbox.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\CameraLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\raw\ScanBeep.mp3" />
   </ItemGroup>

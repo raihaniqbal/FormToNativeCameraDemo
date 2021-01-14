@@ -24,9 +24,10 @@ namespace FormsToNativeCameraDemo
             });
         }
 
-        private void btnStartScanning_Clicked(object sender, EventArgs e)
+        private async void btnStartScanning_Clicked(object sender, EventArgs e)
         {
-            _cameraSvc.LaunchActivity();
+            //_cameraSvc.LaunchActivity();
+            await Navigation.PushAsync(new CameraPage());
         }
     }
 }
