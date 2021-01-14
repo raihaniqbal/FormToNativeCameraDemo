@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <SurfaceView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/sv_surfaceView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/pic_layer">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/linearLayout1">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1"
+                android:layout_weight="1"
+                android:background="#4c000000" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout2"
+                android:layout_weight="0">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView3"
+                    android:layout_weight="1"
+                    android:background="#4c000000" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView1"
+                    android:background="@drawable/scannerbox"
+                    android:fitsSystemWindows="false"
+                    android:layout_weight="0"
+                    android:maxWidth="200dp"
+                    android:minWidth="200dp"
+                    android:maxHeight="200dp"
+                    android:minHeight="200dp" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView4"
+                    android:layout_weight="1"
+                    android:background="#4c000000" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:id="@+id/linearLayout3"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/txtTotalDevices"
+                    android:text="Devices Found: 0"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:id="@+id/linearLayout4"
+                android:layout_weight="0" android:background="#000">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView5"
+                    android:layout_weight="1"
+                    android:background="#000" />
+                <ImageButton
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:id="@+id/btnStopScan"
+                        android:src="@drawable/scan_stop_button"
+                        android:layout_weight="0"
+                        android:fitsSystemWindows="false"
+                        android:scaleType="fitXY"
+                        android:drawingCacheQuality="auto"
+                        android:adjustViewBounds="false"
+                        android:maxHeight="100dp"
+                        android:maxWidth="100dp"
+                        android:background="#000" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView6"
+                    android:layout_weight="1"
+                    android:background="#000" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
